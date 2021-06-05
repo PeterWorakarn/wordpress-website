@@ -18,6 +18,8 @@
 /wp-*.php
 /xmlrpc.php
 
+#test
+
 # Configuration
 wp-config.php
 
