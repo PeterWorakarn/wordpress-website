@@ -1,19 +1,34 @@
-<?php
-/**
- * The template for displaying comments
- *
- * This is the template that displays the area of the page that contains both the current comments
- * and the comment form.
- *
- * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
- *
- * @package WordPress
- */
-
-/*
- * If the current post is protected by a password and
- * the visitor has not yet entered the password we will
- * return early without loading the comments.
-*/
-
-?>
+<h2 class="text-center font-bold">Comments Section</h2>
+<h3>
+    <?php 
+        if( !have_comments()) {
+            echo "Leave a Comments";
+        } 
+        else {
+            echo get_comments_number()."Comments";
+        }
+    ?>
+</h3>
+<section>
+    <p class="text-center font-bold">Comment list</p>
+    <?php 
+        wp_list_comments(
+            array(
+                'avatar_size' => 120,
+                'style' => 'div',
+                )
+            );
+            ?>
+    <p class="text-center font-bold">Comment form</p>
+    <?php 
+        if(comments_open()) {
+            comment_form(
+                array(
+                    'class_form' => '',
+                    'title_reply_before' => '<h2 class="text-blue-300">',
+                    'title_reply_after' => '</h2>'
+                )
+            );
+        };
+        ?>
+</section>

@@ -62,4 +62,19 @@ function currentYear(){
     return date('Y');
 }
 
+function widget_areas() {
+    register_sidebar(
+        array(
+            'before_title' => '<h2>',
+            'after_title' => '</h2>',
+            'before_widget' => '',
+            'after_widget' => '',
+            'name' => 'Sidebar',
+            'id' => 'sidebar-1',
+            'description' => 'Sidebar Widget Area description'
+        )
+    );
+}
+add_action('widgets_init','widget_areas');
+
 ?>
