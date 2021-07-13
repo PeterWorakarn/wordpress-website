@@ -47,6 +47,8 @@ function load_stylesheets() {
     wp_enqueue_style('tailwind');
     wp_register_style('styleCSS',get_template_directory_uri().'/assets/css/index.css',false,'all');
     wp_enqueue_style('styleCSS');
+    wp_register_style('accordionCSS',get_template_directory_uri().'/assets/css/accordion.css',false,'all');
+    wp_enqueue_style('accordionCSS');
     wp_register_style('fontCSS',get_template_directory_uri().'https://rsms.me/inter/inter.css',false,'all');
     wp_enqueue_style('fontCSS');
 }
@@ -55,6 +57,8 @@ add_action('wp_enqueue_scripts','load_stylesheets');
 function load_scripts() {
     wp_register_script('customJS',get_template_directory_uri(). '/assets/js/index.js','',1,true);
     wp_enqueue_script('customJS');
+    wp_register_script('accordionJS',get_template_directory_uri(). '/assets/js/accordion.js','',1,true);
+    wp_enqueue_script('accordionJS');
 }
 add_action('wp_enqueue_scripts','load_scripts');
 
@@ -62,6 +66,7 @@ function currentYear(){
     return date('Y');
 }
 
+require get_template_directory() . '/inc/widgets/widget-faq.php';
 function widget_areas() {
     register_sidebar(
         array(
@@ -74,7 +79,31 @@ function widget_areas() {
             'description' => 'Sidebar Widget Area description'
         )
     );
+    register_widget('WidgetFAQ');
 }
 add_action('widgets_init','widget_areas');
 
+
+// can use with only ACF proversion https://www.advancedcustomfields.com/blog/acf-5-8-introducing-acf-blocks-for-gutenberg/
+// add_action('acf/init', 'my_acf_init');
+// function my_acf_init() {
+	
+// 	// check function exists
+// 	if( function_exists('acf_register_block') ) {
+		
+// 		// register a testimonial block
+// 		acf_register_block(array(
+// 			'name'				=> 'testimonial',
+// 			'title'				=> __('TestimonialDD'),
+// 			'description'		=> __('A custom testimonial block.'),
+// 			'render_callback'	=> 'my_acf_block_render_callback',
+// 			'category'			=> 'formatting',
+// 			'icon'				=> 'admin-comments',
+// 			'keywords'			=> array( 'testimonial', 'quote' ),
+// 		));
+// 	}
+// }
+
 ?>
+
+

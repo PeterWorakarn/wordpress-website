@@ -57,4 +57,4 @@
                   )    );?>
   </div>
 </nav>
-<main class="bg-gray-800 px-0 py-5">
+<main class="bg-gray-800 px-0 py-5 accordion-container">

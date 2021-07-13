@@ -1,4 +1,6 @@
 // navigation bar
+// console.log("Hello I'm Navigation");
+
 function navigation() {
     var x = document.getElementById("mobile-menu");
     if (x.style.display === "block") {

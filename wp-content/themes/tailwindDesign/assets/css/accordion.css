@@ -1,0 +1,32 @@
+.ac-accordion .ac-header::after {
+    content: '+';
+    text-align: center;
+    width: 15px;
+    -webkit-transform: translate(0, -50%);
+    transform: translate(0, -50%);
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transition: all ease-in 1s;
+}
+
+.ac-accordion .ac-header.active::after {
+    transform: translate(0, -50%) rotate(45deg);
+    transition: all ease-in 1s;
+}
+
+
+
+.ac-accordion .ac-panel:not(.active-panel) {
+    max-height: 0px;
+    opacity: 0;
+    visibility: hidden;
+    transition: visibility ease-in-out .5s,opacity ease-in-out .5s, max-height ease-out 1s;
+}
+
+.ac-accordion .ac-panel.active-panel {
+    max-height: 300px;
+    opacity: 1;
+    visibility: unset;
+    transition: visibility ease-in-out .5s,opacity ease-in-out .5s, max-height ease-out 1s;
+}
